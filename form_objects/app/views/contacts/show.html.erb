@@ -1,0 +1,31 @@
+<%= notice %>
+
+<h1>Contact Us</h1>
+
+<%= form_for @contact_form, url: contact_path do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.label :join_mailing_list do %>
+      <%= f.check_box :join_mailing_list %>
+      Join the mailing list
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.submit "Send Message" %>
+  </div>
+<% end %>
