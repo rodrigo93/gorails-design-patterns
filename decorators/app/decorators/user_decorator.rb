@@ -1,21 +1,19 @@
-class UserDecorator
-  attr_reader :user, :view_context
+class UserDecorator < Draper::Decorator
+  delegate_all
 
-  delegate :first_name, :last_name, :admin?, :moderator?, to: :user
-
-  def initialize(user, view_context)
-    @user, @view_context = user, view_context
-  end
-
-  def name
-    "#{first_name} #{last_name.first}."
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def staff_badge
-    view_context.content_tag :span, "Staff", class: "badge badge-success" if admin?
+    h.content_tag :span, "Staff", class: "badge badge-success" if admin?
   end
 
   def mod_badge
-    view_context.content_tag :span, "Mod", class: "badge badge-primary" if user.moderator?
+    h.content_tag :span, "Mod", class: "badge badge-primary" if moderator?
+  end
+
+  def self.collection_decorator_class
+    PaginatingDecorator
   end
 end

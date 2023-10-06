@@ -16,9 +16,12 @@
 */tmp/*
 !/log/.keep
 !/tmp/.keep
+*.log
 
 # Ignore Byebug command history file.
 .byebug_history
 
 # IntelliJ files
 .idea
+.idea/*
+*/.idea
