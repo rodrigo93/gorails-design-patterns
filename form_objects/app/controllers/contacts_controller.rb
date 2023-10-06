@@ -5,7 +5,8 @@ class ContactsController < ApplicationController
 
   def create
     @contact_form = ContactForm.new(contact_form_params)
-    if @contact_form.save
+
+    if @contact_form.send_email
       redirect_to contact_path, notice: "Your message was sent! Thanks!"
     else
       render action: :show

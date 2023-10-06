@@ -5,14 +5,12 @@ class ContactForm
 
   validates :name, :email, :body, presence: true
 
-  def save
-    if valid?
-      # send email
-      #ContactMailer.message(params).deliver_later
-      true
-    else
-      false
-    end
+  def send_email
+    return false unless valid?
+
+    # send email
+    # ContactMailer.message(params).deliver_later
+    true
   end
 
   def join_mailing_list
